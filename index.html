@@ -1,90 +1,502 @@
 <!doctype html>
-<html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kiran Gade</title>
+<html lang="en" data-mode="architect">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<style>
-  :root{color-scheme:light dark; --bg:#0b1220; --fg:#e8eefc; --card:rgba(255,255,255,.06); --bd:rgba(255,255,255,.14)}
-  [data-theme="light"]{--bg:#f6f7fb; --fg:#0b1220; --card:#fff; --bd:rgba(0,0,0,.12)}
-  body{margin:0; min-height:100vh; display:grid; place-items:center; background:var(--bg); color:var(--fg);
-       font:16px/1.4 system-ui,Segoe UI,Roboto,Arial}
-  .c{width:min(760px,92vw); padding:26px 22px; border-radius:16px; border:1px solid var(--bd); background:var(--card)}
-  h1{margin:0 0 10px; font-size:34px}
-  .row{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-  .pill{padding:10px 12px; border:1px solid var(--bd); border-radius:999px; background:rgba(255,255,255,.04)}
-  .age{margin-top:14px; font:600 18px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre-wrap}
-  button{cursor:pointer; border:1px solid var(--bd); background:transparent; color:var(--fg);
-         padding:8px 10px; border-radius:10px}
-  button:active{transform:scale(.98)}
-</style>
+  <!-- SEO (recruiter-friendly) -->
+  <title>Kiran Gade | Cloud Architect / Senior .NET Engineer (AWS, Microservices)</title>
+  <meta name="description" content="Kiran Gade — 11+ years building backend systems in .NET and modernizing platforms on AWS. Microservices, cloud-native modernization, ECS/EKS, Terraform, CI/CD, observability, and production reliability." />
+  <meta name="keywords" content="Kiran Gade, Cloud Architect, Senior .NET Engineer, AWS, .NET, ASP.NET Core, Microservices, ECS, EKS, Terraform, CI/CD, Docker, Kubernetes, Event-Driven, SAGA, Outbox, Distributed Systems, Cloud Migration" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://kbgade.github.io/kiran-gade-intro/" />
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kiran Gade | Cloud Architect / Senior .NET Engineer" />
+  <meta property="og:description" content="11+ years in backend .NET and AWS modernization. Cloud-native design, microservices, CI/CD, observability, and reliability." />
+  <meta property="og:url" content="https://kbgade.github.io/kiran-gade-intro/" />
+  <meta property="og:image" content="https://kbgade.github.io/kiran-gade-intro/og-image.png" /> <!-- optional -->
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kiran Gade | Cloud Architect / Senior .NET Engineer" />
+  <meta name="twitter:description" content="Backend .NET + AWS modernization | Microservices | CI/CD | Observability | Reliability" />
+
+  <style>
+    :root{
+      color-scheme: light dark;
+      --bg:#0b1220; --fg:#e8eefc; --muted:rgba(232,238,252,.78);
+      --card:rgba(255,255,255,.06); --bd:rgba(255,255,255,.14);
+      --pill:rgba(255,255,255,.08);
+      --accent:#7aa2ff;
+      --shadow: 0 18px 50px rgba(0,0,0,.38);
+    }
+    [data-theme="light"]{
+      --bg:#f6f7fb; --fg:#0b1220; --muted:rgba(11,18,32,.72);
+      --card:#ffffff; --bd:rgba(0,0,0,.12);
+      --pill:rgba(0,0,0,.04);
+      --accent:#2b59ff;
+      --shadow: 0 18px 50px rgba(0,0,0,.10);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    a{color:var(--fg); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(980px,92vw); margin:0 auto; padding:28px 0 54px}
+    header{
+      position:sticky; top:0; z-index:10;
+      background:linear-gradient(to bottom, rgba(11,18,32,.92), rgba(11,18,32,.70), rgba(11,18,32,0));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    [data-theme="light"] header{
+      background:linear-gradient(to bottom, rgba(246,247,251,.92), rgba(246,247,251,.70), rgba(246,247,251,0));
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .topbar{
+      width:min(980px,92vw); margin:0 auto; padding:14px 0;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; gap:10px; align-items:center}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:var(--card); border:1px solid var(--bd);
+      display:grid; place-items:center; box-shadow: var(--shadow);
+      font-weight:800; letter-spacing:.3px;
+    }
+    .brand .t1{font-weight:800}
+    .brand .t2{font-size:12px; color:var(--muted); margin-top:2px}
+
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+
+    .btn, .seg{
+      border:1px solid var(--bd); background:var(--card); color:var(--fg);
+      border-radius:12px; padding:10px 12px; cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .btn:active{transform:scale(.99)}
+    .seg{
+      display:flex; padding:4px;
+      gap:4px;
+    }
+    .seg button{
+      border:0; background:transparent; color:var(--muted);
+      padding:8px 10px; border-radius:10px; cursor:pointer;
+      font-weight:650;
+    }
+    .seg button[aria-pressed="true"]{
+      background:rgba(122,162,255,.18);
+      color:var(--fg);
+      outline:1px solid rgba(122,162,255,.35);
+    }
+
+    .card{
+      margin-top:18px;
+      background:var(--card); border:1px solid var(--bd);
+      border-radius:18px; padding:26px; box-shadow: var(--shadow);
+    }
+    h1{margin:0 0 8px; font-size:38px; letter-spacing:.2px}
+    .subtitle{margin:0; color:var(--muted); font-size:16px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px; border-radius:999px;
+      background:var(--pill); border:1px solid var(--bd);
+      font-size:14px;
+    }
+    .grid{
+      display:grid; grid-template-columns:1fr; gap:14px; margin-top:14px;
+    }
+    @media (min-width:860px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    h2{margin:0 0 10px; font-size:18px}
+    ul{margin:0; padding-left:18px; color:var(--muted)}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin-top:20px;
+    }
+    .section-title p{margin:0; color:var(--muted); font-size:13px}
+    .project{
+      padding:14px; border-radius:14px;
+      background:rgba(255,255,255,.04); border:1px solid var(--bd);
+    }
+    .project h3{margin:0 0 6px; font-size:16px}
+    .project p{margin:0 0 10px; color:var(--muted)}
+    .project .impact{margin:0; color:var(--fg); font-size:13px}
+    footer{margin-top:22px; color:var(--muted); font-size:12px}
+    .muted{color:var(--muted)}
+    .split{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .small{font-size:13px}
+    .hide{display:none!important}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.95em}
+  </style>
+</head>
 
 <body>
-  <main class="c">
-    <div class="row">
-      <div>
-        <h1>Kiran Gade</h1>
-        <div class="pill">DOB: 01 Jan 1991</div>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">KG</div>
+        <div>
+          <div class="t1">Kiran Gade</div>
+          <div class="t2">Toggle: Cloud Architect ↔ Senior IC</div>
+        </div>
       </div>
-      <button id="toggle" aria-label="Toggle theme">🌙/☀️</button>
-    </div>
 
-    <div id="age" class="age">Loading…</div>
+      <div class="controls">
+        <div class="seg" role="group" aria-label="Role toggle">
+          <button id="modeArchitect" aria-pressed="true" type="button">Architect</button>
+          <button id="modeIC" aria-pressed="false" type="button">Senior IC</button>
+        </div>
+
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌙 / ☀️</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO (Architect) -->
+    <section id="hero-architect" class="card">
+      <h1>Kiran Gade</h1>
+      <p class="subtitle"><strong>Cloud Architect</strong> | .NET & AWS | 11+ Years Experience</p>
+      <p class="muted" style="margin-top:12px; margin-bottom:0">
+        I design and modernize production systems on AWS with a focus on scalability, security, observability, and operational excellence.
+      </p>
+
+      <div class="cta">
+        <!-- Replace # with your real links -->
+        <a class="pill" href="#" target="_blank" rel="noopener">📄 Download Resume</a>
+        <a class="pill" href="https://github.com/KBGade" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="pill" href="#" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <span class="pill">📍 Pune, India</span>
+      </div>
+    </section>
+
+    <!-- HERO (Senior IC) -->
+    <section id="hero-ic" class="card hide">
+      <h1>Kiran Gade</h1>
+      <p class="subtitle"><strong>Senior .NET Engineer (Senior IC)</strong> | AWS | Backend & Distributed Systems</p>
+      <p class="muted" style="margin-top:12px; margin-bottom:0">
+        I build reliable backend services in .NET and help teams ship cloud-ready systems with strong production stability.
+      </p>
+
+      <div class="cta">
+        <!-- Replace # with your real links -->
+        <a class="pill" href="#" target="_blank" rel="noopener">📄 Download Resume</a>
+        <a class="pill" href="https://github.com/KBGade" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="pill" href="#" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <span class="pill">📍 Pune, India</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="card" id="about">
+      <div class="split">
+        <h2 style="margin:0">About</h2>
+        <div class="small muted">Role-aware content switches with the toggle</div>
+      </div>
+
+      <div id="about-architect">
+        <p class="muted" style="margin:10px 0 0">
+          I’m a cloud-focused software professional with 11+ years of experience designing, migrating, and operating distributed systems.
+          My recent focus is AWS modernization: containerized microservices, secure networking, CI/CD automation, and production observability.
+        </p>
+        <p class="muted" style="margin:10px 0 0">
+          I treat architecture as balancing business needs, technical constraints, and long-term operability—so the system is not only built, but reliably run in production.
+        </p>
+      </div>
+
+      <div id="about-ic" class="hide">
+        <p class="muted" style="margin:10px 0 0">
+          I’m a senior individual contributor with 11+ years of experience building backend systems in .NET—APIs, microservices, integrations, and production support.
+        </p>
+        <p class="muted" style="margin:10px 0 0">
+          I stay hands-on with implementation and debugging, and I collaborate closely with DevOps and architecture teams to deliver stable, scalable services.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="card" id="skills">
+      <div class="section-title">
+        <h2>Skills Snapshot</h2>
+        <p>Quick scan for recruiters</p>
+      </div>
+
+      <div id="skills-architect" class="grid">
+        <div class="project">
+          <h3>Cloud & Infrastructure</h3>
+          <p>AWS (ECS/Fargate, EKS, Lambda, RDS/Aurora, S3, IAM, CloudWatch), VPC, ALB, Auto Scaling</p>
+        </div>
+        <div class="project">
+          <h3>Architecture</h3>
+          <p>Microservices, Event-Driven Systems, SAGA, Outbox, High Availability, DR thinking</p>
+        </div>
+        <div class="project">
+          <h3>DevOps & Automation</h3>
+          <p>Docker, GitHub Actions / TeamCity, Terraform, CI/CD, blue/green & safe rollouts</p>
+        </div>
+        <div class="project">
+          <h3>Backend</h3>
+          <p>.NET, ASP.NET Core, Web APIs, performance, resilience patterns</p>
+        </div>
+      </div>
+
+      <div id="skills-ic" class="grid hide">
+        <div class="project">
+          <h3>Backend Development</h3>
+          <p>.NET, ASP.NET Core, Web API, microservices, async/await, clean layering</p>
+        </div>
+        <div class="project">
+          <h3>Cloud & Containers</h3>
+          <p>AWS fundamentals, Docker, ECS/EKS exposure, environment-based configuration</p>
+        </div>
+        <div class="project">
+          <h3>Data & Integration</h3>
+          <p>EF Core / Dapper, relational DB patterns, messaging basics, idempotency</p>
+        </div>
+        <div class="project">
+          <h3>Production Readiness</h3>
+          <p>Structured logging, health checks, correlation IDs, troubleshooting & incident handling</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="card" id="projects">
+      <div class="section-title">
+        <h2>Selected Work</h2>
+        <p>Case-style highlights</p>
+      </div>
+
+      <div id="projects-architect" class="grid">
+        <div class="project">
+          <h3>On-Prem to AWS Migration</h3>
+          <p>
+            Designed a phased migration strategy with a secure AWS baseline (VPC, private subnets, ALB) and container deployment on ECS/Fargate.
+            Focused on stability first, then modernization (CI/CD, observability, scaling).
+          </p>
+          <p class="impact"><strong>Impact:</strong> Reduced manual ops, improved reliability, enabled faster and safer releases.</p>
+        </div>
+
+        <div class="project">
+          <h3>Microservices with Reliable Events</h3>
+          <p>
+            Applied event-driven patterns with SAGA/outbox to avoid distributed transactions and improve failure isolation.
+            Emphasized idempotency, retries, DLQs, and traceability.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Better fault tolerance, clearer service ownership, predictable recovery.</p>
+        </div>
+
+        <div class="project">
+          <h3>Platform Observability & Operations</h3>
+          <p>
+            Standardized structured logs, correlation IDs, dashboards/alarms, and health checks to reduce MTTR and improve production confidence.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Faster incident triage and fewer “unknown” outages.</p>
+        </div>
+
+        <div class="project">
+          <h3>Infrastructure as Code</h3>
+          <p>
+            Used Terraform/CloudFormation to create repeatable environments, reduce drift, and make deployments consistent across Dev/QA/Prod.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Reliable environment parity and easier scaling/changes.</p>
+        </div>
+      </div>
+
+      <div id="projects-ic" class="grid hide">
+        <div class="project">
+          <h3>Modernized a Legacy .NET Service</h3>
+          <p>
+            Introduced cleaner layering, improved API design, added production-grade logging/health checks, and prepared services for container deployment.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Improved maintainability and reduced production issues.</p>
+        </div>
+
+        <div class="project">
+          <h3>Performance & Reliability Improvements</h3>
+          <p>
+            Applied async patterns, safe HttpClient usage (factory), and resilience practices (timeouts, controlled retries) to reduce latency and cascading failures.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Better p95/p99 latency and fewer transient failures.</p>
+        </div>
+
+        <div class="project">
+          <h3>Hands-on Production Debugging</h3>
+          <p>
+            Debugged distributed issues using metrics → traces → logs, with correlation IDs to track a single request across services and dependencies.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Faster resolution and clearer runbooks for recurring issues.</p>
+        </div>
+
+        <div class="project">
+          <h3>CI/CD for .NET Delivery</h3>
+          <p>
+            Implemented pipelines to build/test/package services, and promoted artifacts safely across environments with consistent configuration handling.
+          </p>
+          <p class="impact"><strong>Impact:</strong> Faster releases with fewer manual steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINDSET -->
+    <section class="card" id="mindset">
+      <div class="section-title">
+        <h2>How I Work</h2>
+        <p>Signals seniority quickly</p>
+      </div>
+
+      <div id="mindset-architect">
+        <ul>
+          <li>I design for failure: timeouts, backpressure, retries (carefully), and graceful degradation.</li>
+          <li>I prioritize operability: logs, metrics, traces, and dashboards are part of the architecture.</li>
+          <li>I use managed services intentionally to reduce operational burden and improve reliability.</li>
+          <li>I document trade-offs and align architecture with business constraints and delivery timelines.</li>
+        </ul>
+      </div>
+
+      <div id="mindset-ic" class="hide">
+        <ul>
+          <li>I write production-ready code: correctness first, then performance and elegance.</li>
+          <li>I keep boundaries clean: small services, clear contracts, and readable abstractions.</li>
+          <li>I build with observability: structured logs, correlation IDs, and health checks by default.</li>
+          <li>I prefer iterative modernization over risky rewrites, and I mentor teams through it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="card" id="experience">
+      <div class="section-title">
+        <h2>Experience Summary</h2>
+        <p>Resume-matching, recruiter-friendly</p>
+      </div>
+
+      <p class="muted" style="margin:0">
+        11+ years in backend development with strong focus on .NET, modern microservices practices, and cloud-native modernization on AWS.
+        Experienced in designing CI/CD pipelines, container-based deployments, and production observability for distributed systems.
+      </p>
+
+      <p class="muted" style="margin:10px 0 0">
+        <!-- Edit this line if you want to match your resume more exactly -->
+        Recent work includes modernizing legacy systems to containerized .NET services on AWS and improving reliability using event-driven patterns.
+      </p>
+
+      <div class="grid" style="margin-top:12px">
+        <div class="project">
+          <h3>Common Focus Areas</h3>
+          <p class="muted" style="margin:0">
+            Cloud migration • Microservices • CI/CD • Observability • Resilience • Security basics (IAM roles, secrets handling)
+          </p>
+        </div>
+        <div class="project">
+          <h3>Tools & Platforms</h3>
+          <p class="muted" style="margin:0">
+            AWS • Docker • GitHub Actions/TeamCity • Terraform • CloudWatch • .NET / ASP.NET Core
+          </p>
+        </div>
+      </div>
+
+      <p class="small muted" style="margin:12px 0 0">
+        Note: If you paste your latest resume text here (or upload it), I can align every bullet 1:1 with your exact project names, metrics, and keywords.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact">
+      <div class="split">
+        <h2 style="margin:0">Links</h2>
+        <div class="small muted">Replace placeholders with your real URLs</div>
+      </div>
+
+      <div class="cta">
+        <a class="pill" href="#" target="_blank" rel="noopener">📄 Resume PDF</a>
+        <a class="pill" href="https://github.com/KBGade" target="_blank" rel="noopener">💻 GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <a class="pill" href="mailto:kbgade.cse@gmail.com">✉️ Email</a>
+      </div>
+
+      <footer>
+        <div class="muted">© <span id="yr"></span> Kiran Gade • Built as a single-file site for GitHub Pages</div>
+      </footer>
+    </section>
   </main>
 
-<script>
-  // DOB (local time): 01-01-1991 00:00:00.000
-  const dob = new Date(1991, 0, 1, 0, 0, 0, 0);
+  <script>
+    // Year
+    document.getElementById("yr").textContent = new Date().getFullYear();
 
-  // Theme toggle (persist)
-  const saved = localStorage.getItem("theme");
-  if (saved) document.documentElement.dataset.theme = saved;
+    // Theme toggle (persist)
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
 
-  document.getElementById("toggle").onclick = () => {
-    const cur = document.documentElement.dataset.theme;
-    const next = cur === "light" ? "" : "light"; // "" => dark/default
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
-  };
+    document.getElementById("themeBtn").onclick = () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = (cur === "light") ? "" : "light"; // "" => dark/default
+      if (next) document.documentElement.setAttribute("data-theme", next);
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", next);
+    };
 
-  // Smooth animated counter: update internal "target" each frame, ease displayed value
-  let shownMs = 0;
+    // Mode toggle (persist)
+    const savedMode = localStorage.getItem("mode");
+    if (savedMode) setMode(savedMode);
 
-  function tick(){
-    const now = Date.now();
-    const targetMs = now - dob.getTime();
+    const btnArch = document.getElementById("modeArchitect");
+    const btnIC = document.getElementById("modeIC");
 
-    // Ease: move ~20% toward target each frame for smooth animation
-    shownMs += (targetMs - shownMs) * 0.20;
+    btnArch.onclick = () => setMode("architect");
+    btnIC.onclick = () => setMode("ic");
 
-    const ms = Math.max(0, shownMs);
+    function setMode(mode){
+      const isArch = (mode === "architect");
+      document.documentElement.setAttribute("data-mode", mode);
+      localStorage.setItem("mode", mode);
 
-    const totalSeconds = ms / 1000;
-    const totalMinutes = totalSeconds / 60;
-    const totalHours   = totalMinutes / 60;
-    const totalDays    = totalHours / 24;
-    const totalYears   = totalDays / 365.2425; // avg year (leap years included)
+      // Button state
+      btnArch.setAttribute("aria-pressed", String(isArch));
+      btnIC.setAttribute("aria-pressed", String(!isArch));
 
-    const years = Math.floor(totalYears);
-    const days  = Math.floor(totalDays % 365.2425);
-    const hrs   = Math.floor(totalHours % 24);
-    const mins  = Math.floor(totalMinutes % 60);
-    const secs  = Math.floor(totalSeconds % 60);
-    const msec  = Math.floor(ms % 1000);
+      // Heroes
+      toggle("hero-architect", isArch);
+      toggle("hero-ic", !isArch);
 
-    document.getElementById("age").textContent =
-`Age (live)
-${years} years
-${days} days
-${hrs} hours
-${mins} minutes
-${secs} seconds
-${msec} milliseconds`;
+      // About
+      toggle("about-architect", isArch);
+      toggle("about-ic", !isArch);
 
-    requestAnimationFrame(tick);
-  }
+      // Skills
+      toggle("skills-architect", isArch);
+      toggle("skills-ic", !isArch);
 
-  requestAnimationFrame(tick);
-</script>
+      // Projects
+      toggle("projects-architect", isArch);
+      toggle("projects-ic", !isArch);
+
+      // Mindset
+      toggle("mindset-architect", isArch);
+      toggle("mindset-ic", !isArch);
+
+      // Optional: update page title slightly for SEO + clarity
+      document.title = isArch
+        ? "Kiran Gade | Cloud Architect (.NET & AWS)"
+        : "Kiran Gade | Senior .NET Engineer (AWS)";
+    }
+
+    function toggle(id, show){
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle("hide", !show);
+    }
+
+    // Default mode if nothing saved
+    if (!savedMode) setMode("architect");
+  </script>
 </body>
 </html>
