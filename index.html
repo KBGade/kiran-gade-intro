@@ -594,7 +594,7 @@
             <h2>Professional Summary</h2>
           </div>
           <p>
-            This section is designed so you can quickly update your positioning depending on whether you are targeting senior engineer, cloud engineer, or architect-leaning roles.
+            <!--This section is designed so you can quickly update your positioning depending on whether you are targeting senior engineer, cloud engineer, or architect-leaning roles.-->
           </p>
         </div>
         <div class="summary-grid">
@@ -621,7 +621,7 @@
             <h2>Core Skills</h2>
           </div>
           <p>
-            Keep the percentages as your own confidence indicators. You can edit the labels or levels directly in <code>index.html</code> without changing the overall layout.
+            <!-- Keep the percentages as your own confidence indicators. You can edit the labels or levels directly in <code>index.html</code> without changing the overall layout.-->
           </p>
         </div>
 
@@ -731,7 +731,7 @@
             <h2>What I Bring</h2>
           </div>
           <p>
-            Position these cards to match the kind of role you are applying for. For architect-style applications, emphasize system design and modernization. For senior IC roles, emphasize delivery and backend depth.
+            <!--Position these cards to match the kind of role you are applying for. For architect-style applications, emphasize system design and modernization. For senior IC roles, emphasize delivery and backend depth.-->
           </p>
         </div>
         <div class="highlights-grid">
@@ -762,7 +762,7 @@
             <h2>Project Highlights</h2>
           </div>
           <p>
-            These are placeholder summaries you can customize based on the exact resume version you want to show recruiters, hiring managers, or interview panels.
+            <!-- These are placeholder summaries you can customize based on the exact resume version you want to show recruiters, hiring managers, or interview panels.-->
           </p>
         </div>
         <div class="projects-grid">
@@ -804,7 +804,7 @@
             <h2>Experience Snapshot</h2>
           </div>
           <p>
-            You can replace these entries with exact employer names, dates, and bullet points from your latest resume whenever needed.
+            <!-- You can replace these entries with exact employer names, dates, and bullet points from your latest resume whenever needed.-->
           </p>
         </div>
         <div class="timeline">
@@ -844,7 +844,7 @@
             <h2>Contact & Profile Links</h2>
           </div>
           <p>
-            Replace the placeholders below with your live links. This keeps the file easy to maintain directly from your repository.
+            <!-- Replace the placeholders below with your live links. This keeps the file easy to maintain directly from your repository.-->
           </p>
         </div>
         <div class="contact-grid">
@@ -960,26 +960,41 @@
     return labels[type] || "Weather";
   }
 
-  async function reverseGeocode(lat, lon) {
-    try {
-      const res = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&language=en&format=json`,
-        { cache: "no-store" }
-      );
+ async function reverseGeocode(lat, lon) {
+  try {
+    const res = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&language=en&format=json`,
+      { cache: "no-store" }
+    );
 
-      if (!res.ok) {
-        throw new Error("Reverse geocoding failed");
-      }
-
-      const data = await res.json();
-      const place = data && data.results && data.results[0];
-
-      return (place && (place.city || place.name || place.admin1)) || "Your location";
-    } catch (error) {
-      console.error("Reverse geocoding error:", error);
-      return "Your location";
+    if (!res.ok) {
+      throw new Error("Reverse geocoding failed");
     }
+
+    const data = await res.json();
+    const place = data?.results?.[0];
+
+    if (!place) {
+      return "Your area";
+    }
+
+    // Prefer broader city-level names instead of neighborhood names
+    return (
+      place.city ||
+      place.town ||
+      place.village ||
+      place.municipality ||
+      place.county ||
+      place.admin1 ||
+      place.name ||
+      "Your area"
+    );
+
+  } catch (error) {
+    console.error("Reverse geocoding error:", error);
+    return "Your area";
   }
+}
 
   async function loadWeather() {
     const weatherBox = document.getElementById("weather-box");
