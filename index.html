@@ -151,12 +151,72 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #d9e7ff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #e7efff;
       font-size: 14px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+    }
+
+    .weather-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    .weather-icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .weather-refresh {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: #dbe6ff;
+      cursor: pointer;
+      transition: transform 0.35s ease, background 0.2s ease;
+      margin-left: 2px;
+      padding: 0;
+    }
+
+    .weather-refresh svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .weather-refresh:hover {
+      background: rgba(255,255,255,0.14);
+      transform: rotate(180deg);
+    }
+
+    .weather-refresh:hover {
+      background: rgba(255,255,255,0.14);
+      transform: rotate(25deg);
+    }
+
+    .weather-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .hero-actions {
@@ -490,8 +550,9 @@
           Strong at translating business requirements into reliable backend architecture, clean APIs, and deployable cloud solutions.
         </p>
         <div id="weather-box" class="weather-box">
-          <span>🌤</span>
-          <span>Detecting your city weather...</span>
+          <span class="weather-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="9" r="4" fill="#FFD54A"/><g stroke="#FFD54A" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="1.5" x2="9" y2="4"/><line x1="9" y1="14" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="4" y2="9"/><line x1="14" y1="9" x2="16.5" y2="9"/><line x1="3.6" y1="3.6" x2="5.3" y2="5.3"/><line x1="12.7" y1="12.7" x2="14.4" y2="14.4"/><line x1="3.6" y1="14.4" x2="5.3" y2="12.7"/><line x1="12.7" y1="5.3" x2="14.4" y2="3.6"/></g><path d="M16.5 18.5H8a3.5 3.5 0 1 1 .8-6.9A4.8 4.8 0 0 1 17.7 10a3.2 3.2 0 1 1-1.2 8.5Z" fill="#F4F7FB"/></svg></span>
+          <span class="weather-text">Detecting your city weather...</span>
+          <button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
@@ -528,7 +589,7 @@
             <h2>Professional Summary</h2>
           </div>
           <p>
-            <!--This section is designed so you can quickly update your positioning depending on whether you are targeting senior engineer, cloud engineer, or architect-leaning roles.-->
+            This section is designed so you can quickly update your positioning depending on whether you are targeting senior engineer, cloud engineer, or architect-leaning roles.
           </p>
         </div>
         <div class="summary-grid">
@@ -555,7 +616,7 @@
             <h2>Core Skills</h2>
           </div>
           <p>
-            <!-- Keep the percentages as your own confidence indicators. You can edit the labels or levels directly in <code>index.html</code> without changing the overall layout.-->
+            Keep the percentages as your own confidence indicators. You can edit the labels or levels directly in <code>index.html</code> without changing the overall layout.
           </p>
         </div>
 
@@ -665,7 +726,7 @@
             <h2>What I Bring</h2>
           </div>
           <p>
-            <!--Position these cards to match the kind of role you are applying for. For architect-style applications, emphasize system design and modernization. For senior IC roles, emphasize delivery and backend depth.-->
+            Position these cards to match the kind of role you are applying for. For architect-style applications, emphasize system design and modernization. For senior IC roles, emphasize delivery and backend depth.
           </p>
         </div>
         <div class="highlights-grid">
@@ -696,7 +757,7 @@
             <h2>Project Highlights</h2>
           </div>
           <p>
-            <!--These are placeholder summaries you can customize based on the exact resume version you want to show recruiters, hiring managers, or interview panels.-->
+            These are placeholder summaries you can customize based on the exact resume version you want to show recruiters, hiring managers, or interview panels.
           </p>
         </div>
         <div class="projects-grid">
@@ -738,7 +799,7 @@
             <h2>Experience Snapshot</h2>
           </div>
           <p>
-            <!--You can replace these entries with exact employer names, dates, and bullet points from your latest resume whenever needed.-->
+            You can replace these entries with exact employer names, dates, and bullet points from your latest resume whenever needed.
           </p>
         </div>
         <div class="timeline">
@@ -778,13 +839,13 @@
             <h2>Contact & Profile Links</h2>
           </div>
           <p>
-            <!-- Replace the placeholders below with your live links. This keeps the file easy to maintain directly from your repository.-->
+            Replace the placeholders below with your live links. This keeps the file easy to maintain directly from your repository.
           </p>
         </div>
         <div class="contact-grid">
           <div class="card contact-card">
             <h3>Email</h3>
-            <p>kbgade.cse@gmail.com</p>
+            <p><a href="mailto:kbgade.cse@gmail.com">kbgade.cse@gmail.com</a></p>
           </div>
           <div class="card contact-card">
             <h3>LinkedIn</h3>
@@ -793,7 +854,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM.23 8h4.52v15H.23V8zM8.34 8h4.33v2.05h.06c.6-1.14 2.07-2.34 4.26-2.34 4.55 0 5.39 3 5.39 6.89V23h-4.51v-7.64c0-1.82-.03-4.16-2.53-4.16-2.53 0-2.92 1.98-2.92 4.03V23H8.34V8z"/>
                 </svg>
-                linkedin.com/in/kiran-gade/
+                www.linkedin.com/in/kiran-gade-360b3299/
               </a>
             </p>
           </div>
@@ -830,6 +891,20 @@
       const weatherBox = document.getElementById("weather-box");
       if (!weatherBox) return;
 
+      function weatherSvg(type) {
+        const icons = {
+          sunny: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="#FFD54A"/><g stroke="#FFD54A" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.8" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22.2"/><line x1="1.8" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22.2" y2="12"/><line x1="4.2" y1="4.2" x2="6.2" y2="6.2"/><line x1="17.8" y1="17.8" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.2" y2="17.8"/><line x1="17.8" y1="6.2" x2="19.8" y2="4.2"/></g></svg>`,
+          cloudy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8.5" cy="8.5" r="3.5" fill="#FFD54A"/><path d="M16.8 18.2H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 9a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/></svg>`,
+          rainy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.8 14.5H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 5.3a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/><path d="M9 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M17 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+          night: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.8 3.2a7.7 7.7 0 1 0 5 13.7 8.7 8.7 0 1 1-5-13.7Z" fill="#B8C7FF"/><circle cx="17.8" cy="7" r="1" fill="#FFFFFF"/><circle cx="19.8" cy="10" r="0.9" fill="#FFFFFF"/></svg>`
+        };
+        return icons[type] || icons.cloudy;
+      }
+
+      function refreshButton() {
+        return `<button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+      }
+
       try {
         const locRes = await fetch("https://ipapi.co/json/");
         const locData = await locRes.json();
@@ -851,16 +926,32 @@
         );
         const weatherData = await weatherRes.json();
 
-        const temp = weatherData?.current_weather?.temperature;
+        const current = weatherData?.current_weather;
+        const temp = current?.temperature;
+        const code = current?.weathercode;
+        const isDay = current?.is_day === 1;
+
+        let type = "cloudy";
+        if (!isDay) {
+          type = "night";
+        } else if ([0].includes(code)) {
+          type = "sunny";
+        } else if ([1, 2, 3, 45, 48].includes(code)) {
+          type = "cloudy";
+        } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
+          type = "rainy";
+        } else {
+          type = isDay ? "cloudy" : "night";
+        }
 
         if (typeof temp === "number") {
-          weatherBox.innerHTML = `<span>🌤</span><span>${flag} ${city} • ${temp}°C</span>`;
+          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(type)}</span><span class="weather-text">${flag} ${city} • ${temp}°C</span>${refreshButton()}`;
         } else {
-          weatherBox.innerHTML = `<span>🌤</span><span>${flag} ${city} • Weather unavailable</span>`;
+          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(type)}</span><span class="weather-text">${flag} ${city} • Weather unavailable</span>${refreshButton()}`;
         }
       } catch (error) {
         console.error("Weather load failed:", error);
-        weatherBox.innerHTML = "<span>🌤</span><span>Weather unavailable in local preview. Use localhost or GitHub Pages.</span>";
+        weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Weather unavailable in local preview. Use localhost or GitHub Pages.</span>${refreshButton()}`;
       }
     }
 
