@@ -905,53 +905,82 @@
         return `<button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
       }
 
-      try {
-        const locRes = await fetch("https://ipapi.co/json/");
-        const locData = await locRes.json();
+      function getFlagEmoji(code) {
+        if (!code || code.length !== 2) return "🌍";
+        return code.replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt()));
+      }
 
-        const city = locData.city || "Unknown city";
-        const countryCode = (locData.country_code || "").toUpperCase();
+      function mapWeatherCode(code, isDay = true) {
+        if (!isDay) return "night";
+        if ([0].includes(code)) return "sunny";
+        if ([1, 2, 3, 45, 48].includes(code)) return "cloudy";
+        if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return "rainy";
+        return isDay ? "cloudy" : "night";
+      }
 
-        function getFlagEmoji(code) {
-          if (!code || code.length !== 2) return "🌍";
-          return code.replace(/./g, char =>
-            String.fromCodePoint(127397 + char.charCodeAt())
-          );
+      async function fetchJson(url) {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      }
+
+      async function getLocation() {
+        try {
+          return await fetchJson("https://ipapi.co/json/");
+        } catch {
+          return await fetchJson("https://ipwho.is/");
         }
+      }
 
+      async function getWeatherPrimary(lat, lon) {
+        const data = await fetchJson(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+        const current = data?.current_weather;
+        if (!current || typeof current.temperature !== "number") throw new Error("Primary weather unavailable");
+        return {
+          temp: current.temperature,
+          type: mapWeatherCode(current.weathercode, current.is_day === 1)
+        };
+      }
+
+      async function getWeatherFallback(lat, lon) {
+        const data = await fetchJson(`https://wttr.in/${lat},${lon}?format=j1`);
+        const current = data?.current_condition?.[0];
+        if (!current) throw new Error("Fallback weather unavailable");
+        const temp = Number(current.temp_C);
+        const desc = (current.weatherDesc?.[0]?.value || "").toLowerCase();
+        let type = "cloudy";
+        if (desc.includes("sun") || desc.includes("clear")) type = "sunny";
+        else if (desc.includes("rain") || desc.includes("drizzle") || desc.includes("shower")) type = "rainy";
+        else if (desc.includes("cloud") || desc.includes("mist") || desc.includes("fog") || desc.includes("overcast")) type = "cloudy";
+        return { temp, type };
+      }
+
+      weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Fetching local weather...</span>${refreshButton()}`;
+
+      try {
+        const locData = await getLocation();
+        const city = locData.city || locData.city_name || "Unknown city";
+        const countryCode = (locData.country_code || locData.country_code_iso3?.slice(0,2) || "").toUpperCase();
+        const lat = locData.latitude ?? locData.lat;
+        const lon = locData.longitude ?? locData.lon;
         const flag = getFlagEmoji(countryCode);
 
-        const weatherRes = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${locData.latitude}&longitude=${locData.longitude}&current_weather=true`
-        );
-        const weatherData = await weatherRes.json();
-
-        const current = weatherData?.current_weather;
-        const temp = current?.temperature;
-        const code = current?.weathercode;
-        const isDay = current?.is_day === 1;
-
-        let type = "cloudy";
-        if (!isDay) {
-          type = "night";
-        } else if ([0].includes(code)) {
-          type = "sunny";
-        } else if ([1, 2, 3, 45, 48].includes(code)) {
-          type = "cloudy";
-        } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
-          type = "rainy";
-        } else {
-          type = isDay ? "cloudy" : "night";
+        let weather;
+        try {
+          weather = await getWeatherPrimary(lat, lon);
+        } catch (primaryError) {
+          console.warn("Primary weather API failed:", primaryError);
+          weather = await getWeatherFallback(lat, lon);
         }
 
-        if (typeof temp === "number") {
-          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(type)}</span><span class="weather-text">${flag} ${city} • ${temp}°C</span>${refreshButton()}`;
+        if (typeof weather.temp === "number") {
+          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(weather.type)}</span><span class="weather-text">${flag} ${city} • ${weather.temp}°C</span>${refreshButton()}`;
         } else {
-          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(type)}</span><span class="weather-text">${flag} ${city} • Weather unavailable</span>${refreshButton()}`;
+          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(weather.type)}</span><span class="weather-text">${flag} ${city} • Weather unavailable</span>${refreshButton()}`;
         }
       } catch (error) {
         console.error("Weather load failed:", error);
-        weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Weather unavailable in local preview. Use localhost or GitHub Pages.</span>${refreshButton()}`;
+        weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Weather currently unavailable.</span>${refreshButton()}`;
       }
     }
 
