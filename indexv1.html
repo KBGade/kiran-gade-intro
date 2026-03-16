@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-mode="architect">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- SEO -->
+  <title>Kiran Gade | AWS Cloud Architect / Senior .NET Engineer</title>
+  <meta name="description" content="Kiran Gade — AWS Cloud Architect and Senior .NET Engineer with 11+ years of experience in on-prem to cloud migration, infrastructure as code, CI/CD automation, and production-ready backend systems." />
+  <meta name="keywords" content="Kiran Gade, AWS Cloud Architect, Senior .NET Engineer, AWS, EC2, ALB, CloudWatch, SNS, Terraform, CloudFormation, CI/CD, DevOps" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://kbgade.github.io/kiran-gade-intro/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kiran Gade | AWS Cloud Architect / Senior .NET Engineer" />
+  <meta property="og:description" content="11+ years modernizing backend systems. AWS & Azure migrations, IaC, CI/CD, observability, and production reliability." />
+  <meta property="og:url" content="https://kbgade.github.io/kiran-gade-intro/" />
+  <meta property="og:image" content="https://kbgade.github.io/kiran-gade-intro/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Kiran Gade — AWS Cloud Architect / Senior .NET Engineer" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kiran Gade | AWS Cloud Architect / Senior .NET Engineer" />
+  <meta name="twitter:description" content="AWS modernization | IaC | CI/CD | Observability | Reliability" />
+  <meta name="twitter:image" content="https://kbgade.github.io/kiran-gade-intro/og-image.png" />
+
+  <!-- Privacy-safe analytics (Plausible) -->
+  <script defer data-domain="kbgade.github.io" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kiran Gade",
+    "jobTitle": "AWS Cloud Architect / Senior .NET Engineer",
+    "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+    "url": "https://kbgade.github.io/kiran-gade-intro/",
+    "sameAs": [
+      "https://github.com/KBGade",
+      "https://www.linkedin.com/in/kiran-gade-360b3299/"
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      color-scheme: light dark;
+      --bg:#0b1220; --fg:#e8eefc; --muted:rgba(232,238,252,.75);
+      --card:rgba(255,255,255,.06); --bd:rgba(255,255,255,.14);
+      --pill:rgba(255,255,255,.08);
+      --accent:rgba(122,162,255,.18);
+      --accentBd:rgba(122,162,255,.35);
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{
+      --bg:#f6f7fb; --fg:#0b1220; --muted:rgba(11,18,32,.70);
+      --card:#fff; --bd:rgba(0,0,0,.12);
+      --pill:rgba(0,0,0,.04);
+      --accent:rgba(43,89,255,.12);
+      --accentBd:rgba(43,89,255,.25);
+      --shadow:0 18px 45px rgba(0,0,0,.12);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
+    a{color:var(--fg);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(980px,92vw);margin:auto;padding:24px 0 56px}
+    header{position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(8px);
+      background:linear-gradient(to bottom, rgba(11,18,32,.92), rgba(11,18,32,.7), transparent)}
+    [data-theme="light"] header{
+      background:linear-gradient(to bottom, rgba(246,247,251,.92), rgba(246,247,251,.7), transparent)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;
+      width:min(980px,92vw);margin:auto;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;font-weight:800;
+      background:var(--card);border:1px solid var(--bd);box-shadow:var(--shadow)}
+    .controls{display:flex;gap:10px;align-items:center}
+    .seg{display:flex;gap:4px;padding:4px;border:1px solid var(--bd);
+      border-radius:12px;background:var(--card)}
+    .seg button{border:0;background:none;padding:8px 10px;
+      border-radius:10px;color:var(--muted);cursor:pointer;font-weight:650}
+    .seg button[aria-pressed="true"]{
+      background:var(--accent);color:var(--fg);outline:1px solid var(--accentBd)}
+    .btn{border:1px solid var(--bd);background:var(--card);
+      border-radius:12px;padding:10px 12px;cursor:pointer}
+    .card{margin-top:16px;padding:24px;border-radius:18px;
+      background:var(--card);border:1px solid var(--bd);box-shadow:var(--shadow)}
+    h1{margin:0 0 6px;font-size:38px}
+    h2{margin:0 0 10px;font-size:18px}
+    h3{margin:0 0 6px;font-size:16px}
+    .subtitle{color:var(--muted)}
+    .open{margin-top:8px;font-size:13px;color:var(--muted)}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .pill{padding:10px 12px;border-radius:999px;
+      background:var(--pill);border:1px solid var(--bd);font-size:14px}
+    .grid{display:grid;gap:14px;margin-top:14px}
+    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+    .project{padding:14px;border-radius:14px;
+      background:rgba(255,255,255,.04);border:1px solid var(--bd)}
+    p{margin:0;color:var(--muted)}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .hide{display:none}
+    footer{margin-top:18px;color:var(--muted);font-size:12px}
+
+    /* Print */
+    @media print{
+      header,.controls{display:none!important}
+      body{background:#fff;color:#000}
+      .card{box-shadow:none;border:1px solid #bbb}
+      a[href]:after{content:" (" attr(href) ")";font-size:11px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">KG</div>
+      <strong>Kiran Gade</strong>
+    </div>
+    <div class="controls">
+      <div class="seg">
+        <button id="arch" aria-pressed="true">Architect</button>
+        <button id="ic" aria-pressed="false">Senior IC</button>
+      </div>
+      <button class="btn" id="theme">🌙 / ☀️</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section id="hero-architect" class="card">
+    <h1>Kiran Gade</h1>
+    <div class="subtitle"><strong>AWS Cloud Architect</strong> | .NET & Cloud Modernization</div>
+    <div class="open">Open to Senior Backend / Cloud roles</div>
+
+    <p style="margin-top:12px">
+      Designing secure, scalable AWS architectures and modernizing on-prem systems using
+      Infrastructure as Code, automated CI/CD, and production-grade observability.
+    </p>
+
+    <div class="cta">
+      <a class="pill" id="resumeA" href="Kiran-Gade-Resume.pdf" target="_blank">Resume</a>
+      <a class="pill" href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank">LinkedIn</a>
+      <a class="pill" href="https://github.com/KBGade" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <section id="hero-ic" class="card hide">
+    <h1>Kiran Gade</h1>
+    <div class="subtitle"><strong>Senior .NET Engineer</strong> | Backend & Cloud Delivery</div>
+    <div class="open">Open to Senior Backend / Cloud roles</div>
+
+    <p style="margin-top:12px">
+      Hands-on backend engineer delivering .NET services and cloud migrations with focus on
+      CI/CD automation, monitoring, and stable production releases.
+    </p>
+
+    <div class="cta">
+      <a class="pill" id="resumeI" href="Kiran-Gade-Resume.pdf" target="_blank">Resume</a>
+      <a class="pill" href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank">LinkedIn</a>
+      <a class="pill" href="https://github.com/KBGade" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="card">
+    <h2>Experience Highlights</h2>
+    <div class="grid">
+      <div class="project">
+        <h3>Synechron — AWS Cloud Modernization</h3>
+        <ul>
+          <li>On-prem to AWS migration using EC2, ALB, CloudWatch, SNS</li>
+          <li>Infrastructure as Code with Terraform & CloudFormation</li>
+          <li>CI/CD automation using TeamCity and Octopus Deploy</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>GSPANN — Azure Migration</h3>
+        <ul>
+          <li>Cloud readiness assessment & migration planning</li>
+          <li>CI/CD automation and cost optimization</li>
+          <li>Monitoring, logging, and alerting with Azure tools</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Kiran Gade</footer>
+</main>
+
+<script>
+  document.getElementById("y").textContent=new Date().getFullYear();
+
+  const arch=document.getElementById("arch"),
+        ic=document.getElementById("ic"),
+        ha=document.getElementById("hero-architect"),
+        hi=document.getElementById("hero-ic");
+
+  arch.onclick=()=>{arch.setAttribute("aria-pressed","true");ic.setAttribute("aria-pressed","false");
+    ha.classList.remove("hide");hi.classList.add("hide");localStorage.setItem("mode","arch");};
+  ic.onclick=()=>{ic.setAttribute("aria-pressed","true");arch.setAttribute("aria-pressed","false");
+    hi.classList.remove("hide");ha.classList.add("hide");localStorage.setItem("mode","ic");};
+
+  if(localStorage.getItem("mode")==="ic") ic.click();
+
+  document.getElementById("theme").onclick=()=>{
+    document.documentElement.toggleAttribute("data-theme","light");
+  };
+
+  function track(){ if(window.plausible) plausible("ResumeDownload"); }
+  document.getElementById("resumeA")?.addEventListener("click",track);
+  document.getElementById("resumeI")?.addEventListener("click",track);
+</script>
+</body>
+</html>

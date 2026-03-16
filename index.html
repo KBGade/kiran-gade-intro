@@ -1,226 +1,885 @@
-<!doctype html>
-<html lang="en" data-mode="architect">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- SEO -->
-  <title>Kiran Gade | AWS Cloud Architect / Senior .NET Engineer</title>
-  <meta name="description" content="Kiran Gade — AWS Cloud Architect and Senior .NET Engineer with 11+ years of experience in on-prem to cloud migration, infrastructure as code, CI/CD automation, and production-ready backend systems." />
-  <meta name="keywords" content="Kiran Gade, AWS Cloud Architect, Senior .NET Engineer, AWS, EC2, ALB, CloudWatch, SNS, Terraform, CloudFormation, CI/CD, DevOps" />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://kbgade.github.io/kiran-gade-intro/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Kiran Gade | AWS Cloud Architect / Senior .NET Engineer" />
-  <meta property="og:description" content="11+ years modernizing backend systems. AWS & Azure migrations, IaC, CI/CD, observability, and production reliability." />
-  <meta property="og:url" content="https://kbgade.github.io/kiran-gade-intro/" />
-  <meta property="og:image" content="https://kbgade.github.io/kiran-gade-intro/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Kiran Gade — AWS Cloud Architect / Senior .NET Engineer" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kiran Gade | AWS Cloud Architect / Senior .NET Engineer" />
-  <meta name="twitter:description" content="AWS modernization | IaC | CI/CD | Observability | Reliability" />
-  <meta name="twitter:image" content="https://kbgade.github.io/kiran-gade-intro/og-image.png" />
-
-  <!-- Privacy-safe analytics (Plausible) -->
-  <script defer data-domain="kbgade.github.io" src="https://plausible.io/js/script.js"></script>
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Kiran Gade",
-    "jobTitle": "AWS Cloud Architect / Senior .NET Engineer",
-    "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
-    "url": "https://kbgade.github.io/kiran-gade-intro/",
-    "sameAs": [
-      "https://github.com/KBGade",
-      "https://www.linkedin.com/in/kiran-gade-360b3299/"
-    ]
-  }
-  </script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiran Gade | .NET + AWS Engineer</title>
+  <meta name="description" content="Senior .NET and AWS engineer portfolio with skills, architecture strengths, and project highlights." />
   <style>
-    :root{
-      color-scheme: light dark;
-      --bg:#0b1220; --fg:#e8eefc; --muted:rgba(232,238,252,.75);
-      --card:rgba(255,255,255,.06); --bd:rgba(255,255,255,.14);
-      --pill:rgba(255,255,255,.08);
-      --accent:rgba(122,162,255,.18);
-      --accentBd:rgba(122,162,255,.35);
-      --shadow:0 18px 45px rgba(0,0,0,.35);
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121932;
+      --card: rgba(18, 25, 50, 0.82);
+      --line: rgba(255,255,255,0.10);
+      --text: #eef2ff;
+      --muted: #b8c2e0;
+      --accent: #76a9ff;
+      --accent-2: #72e0c4;
+      --accent-3: #ffd166;
+      --shadow: 0 18px 45px rgba(0,0,0,0.28);
+      --radius: 22px;
+      --max: 1180px;
     }
-    [data-theme="light"]{
-      --bg:#f6f7fb; --fg:#0b1220; --muted:rgba(11,18,32,.70);
-      --card:#fff; --bd:rgba(0,0,0,.12);
-      --pill:rgba(0,0,0,.04);
-      --accent:rgba(43,89,255,.12);
-      --accentBd:rgba(43,89,255,.25);
-      --shadow:0 18px 45px rgba(0,0,0,.12);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--fg);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
-    a{color:var(--fg);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{width:min(980px,92vw);margin:auto;padding:24px 0 56px}
-    header{position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(8px);
-      background:linear-gradient(to bottom, rgba(11,18,32,.92), rgba(11,18,32,.7), transparent)}
-    [data-theme="light"] header{
-      background:linear-gradient(to bottom, rgba(246,247,251,.92), rgba(246,247,251,.7), transparent)}
-    .topbar{display:flex;justify-content:space-between;align-items:center;
-      width:min(980px,92vw);margin:auto;padding:14px 0}
-    .brand{display:flex;gap:10px;align-items:center}
-    .logo{width:38px;height:38px;border-radius:12px;
-      display:grid;place-items:center;font-weight:800;
-      background:var(--card);border:1px solid var(--bd);box-shadow:var(--shadow)}
-    .controls{display:flex;gap:10px;align-items:center}
-    .seg{display:flex;gap:4px;padding:4px;border:1px solid var(--bd);
-      border-radius:12px;background:var(--card)}
-    .seg button{border:0;background:none;padding:8px 10px;
-      border-radius:10px;color:var(--muted);cursor:pointer;font-weight:650}
-    .seg button[aria-pressed="true"]{
-      background:var(--accent);color:var(--fg);outline:1px solid var(--accentBd)}
-    .btn{border:1px solid var(--bd);background:var(--card);
-      border-radius:12px;padding:10px 12px;cursor:pointer}
-    .card{margin-top:16px;padding:24px;border-radius:18px;
-      background:var(--card);border:1px solid var(--bd);box-shadow:var(--shadow)}
-    h1{margin:0 0 6px;font-size:38px}
-    h2{margin:0 0 10px;font-size:18px}
-    h3{margin:0 0 6px;font-size:16px}
-    .subtitle{color:var(--muted)}
-    .open{margin-top:8px;font-size:13px;color:var(--muted)}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .pill{padding:10px 12px;border-radius:999px;
-      background:var(--pill);border:1px solid var(--bd);font-size:14px}
-    .grid{display:grid;gap:14px;margin-top:14px}
-    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
-    .project{padding:14px;border-radius:14px;
-      background:rgba(255,255,255,.04);border:1px solid var(--bd)}
-    p{margin:0;color:var(--muted)}
-    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
-    .hide{display:none}
-    footer{margin-top:18px;color:var(--muted);font-size:12px}
 
-    /* Print */
-    @media print{
-      header,.controls{display:none!important}
-      body{background:#fff;color:#000}
-      .card{box-shadow:none;border:1px solid #bbb}
-      a[href]:after{content:" (" attr(href) ")";font-size:11px}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(118, 169, 255, 0.20), transparent 30%),
+        radial-gradient(circle at top right, rgba(114, 224, 196, 0.16), transparent 28%),
+        linear-gradient(180deg, #0b1020 0%, #0d1326 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(118, 169, 255, 0.8);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 56px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(118, 169, 255, 0.20), transparent 60%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(118, 169, 255, 0.25);
+      background: rgba(118, 169, 255, 0.08);
+      color: #d9e7ff;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .weather-box {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d9e7ff;
+      font-size: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4f7fff);
+      color: white;
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 24px;
+      height: 100%;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat h3 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .stat p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.6px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .summary-grid,
+    .highlights-grid,
+    .projects-grid,
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .summary-card,
+    .highlight-card,
+    .project-card,
+    .contact-card,
+    .timeline-card,
+    .skill-panel {
+      padding: 22px;
+    }
+
+    .summary-card h3,
+    .highlight-card h3,
+    .project-card h3,
+    .timeline-card h3,
+    .skill-panel h3,
+    .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .summary-card p,
+    .highlight-card p,
+    .project-card p,
+    .timeline-card p,
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .skill-group {
+      margin-bottom: 22px;
+    }
+
+    .skill-group:last-child { margin-bottom: 0; }
+
+    .skill-group h4 {
+      margin: 0 0 14px;
+      font-size: 15px;
+      color: #dbe6ff;
+      letter-spacing: 0.2px;
+    }
+
+    .skill-row { margin-bottom: 14px; }
+    .skill-row:last-child { margin-bottom: 0; }
+
+    .skill-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .skill-meta span:last-child { color: var(--muted); }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar > i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 1.2s ease;
+      width: 0;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d8e1ff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .tech-icons div {
+      background: #121932;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      color: #d9e7ff;
+    }
+
+    .highlights-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-card ul,
+    .timeline-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project-card li,
+    .timeline-card li { margin-bottom: 8px; }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .timeline-title strong { font-size: 17px; }
+    .timeline-title span { color: var(--muted); font-size: 14px; }
+
+    .contact-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .resume-float {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4f7fff;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      z-index: 999;
+    }
+
+    .resume-float:hover { background: #3e68d6; }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .skills-layout,
+      .summary-grid,
+      .projects-grid,
+      .highlights-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card,
+      .stat-grid,
+      .summary-card,
+      .skill-panel,
+      .highlight-card,
+      .project-card,
+      .timeline-card,
+      .contact-card {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .resume-float {
+        top: auto;
+        bottom: 16px;
+        right: 16px;
+      }
     }
   </style>
 </head>
-
 <body>
-<header>
-  <div class="topbar">
-    <div class="brand">
-      <div class="logo">KG</div>
-      <strong>Kiran Gade</strong>
-    </div>
-    <div class="controls">
-      <div class="seg">
-        <button id="arch" aria-pressed="true">Architect</button>
-        <button id="ic" aria-pressed="false">Senior IC</button>
-      </div>
-      <button class="btn" id="theme">🌙 / ☀️</button>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <!-- HERO -->
-  <section id="hero-architect" class="card">
-    <h1>Kiran Gade</h1>
-    <div class="subtitle"><strong>AWS Cloud Architect</strong> | .NET & Cloud Modernization</div>
-    <div class="open">Open to Senior Backend / Cloud roles</div>
-
-    <p style="margin-top:12px">
-      Designing secure, scalable AWS architectures and modernizing on-prem systems using
-      Infrastructure as Code, automated CI/CD, and production-grade observability.
-    </p>
-
-    <div class="cta">
-      <a class="pill" id="resumeA" href="Kiran-Gade-Resume.pdf" target="_blank">Resume</a>
-      <a class="pill" href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank">LinkedIn</a>
-      <a class="pill" href="https://github.com/KBGade" target="_blank">GitHub</a>
-    </div>
-  </section>
-
-  <section id="hero-ic" class="card hide">
-    <h1>Kiran Gade</h1>
-    <div class="subtitle"><strong>Senior .NET Engineer</strong> | Backend & Cloud Delivery</div>
-    <div class="open">Open to Senior Backend / Cloud roles</div>
-
-    <p style="margin-top:12px">
-      Hands-on backend engineer delivering .NET services and cloud migrations with focus on
-      CI/CD automation, monitoring, and stable production releases.
-    </p>
-
-    <div class="cta">
-      <a class="pill" id="resumeI" href="Kiran-Gade-Resume.pdf" target="_blank">Resume</a>
-      <a class="pill" href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank">LinkedIn</a>
-      <a class="pill" href="https://github.com/KBGade" target="_blank">GitHub</a>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="card">
-    <h2>Experience Highlights</h2>
-    <div class="grid">
-      <div class="project">
-        <h3>Synechron — AWS Cloud Modernization</h3>
-        <ul>
-          <li>On-prem to AWS migration using EC2, ALB, CloudWatch, SNS</li>
-          <li>Infrastructure as Code with Terraform & CloudFormation</li>
-          <li>CI/CD automation using TeamCity and Octopus Deploy</li>
-        </ul>
-      </div>
-      <div class="project">
-        <h3>GSPANN — Azure Migration</h3>
-        <ul>
-          <li>Cloud readiness assessment & migration planning</li>
-          <li>CI/CD automation and cost optimization</li>
-          <li>Monitoring, logging, and alerting with Azure tools</li>
-        </ul>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-dot"></span> Kiran Gade</div>
+      <div class="nav-links">
+        <a href="#summary">Summary</a>
+        <a href="#skills">Skills</a>
+        <a href="#highlights">Strengths</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <footer>© <span id="y"></span> Kiran Gade</footer>
-</main>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="card hero-card">
+        <div class="eyebrow">Associate Specialist Technology • Senior .NET / AWS Engineer</div>
+        <h1>Cloud-native .NET engineer focused on scalable backend platforms.</h1>
+        <p>
+          11+ years building enterprise applications with C#, ASP.NET Core, microservices, AWS, Azure, CI/CD, and modernization initiatives.
+          Strong at translating business requirements into reliable backend architecture, clean APIs, and deployable cloud solutions.
+        </p>
+        <div id="weather-box" class="weather-box">
+          <span>🌤</span>
+          <span>Detecting your city weather...</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-secondary" href="#projects">View project highlights</a>
+        </div>
+      </div>
 
-<script>
-  document.getElementById("y").textContent=new Date().getFullYear();
+      <div class="card stat-grid">
+        <div class="stat">
+          <h3>11+</h3>
+          <p>Years in backend and enterprise application development</p>
+        </div>
+        <div class="stat">
+          <h3>.NET</h3>
+          <p>C#, ASP.NET Core, MVC, Web API, EF Core, distributed systems</p>
+        </div>
+        <div class="stat">
+          <h3>AWS</h3>
+          <p>ECS, EC2, S3, ECR, CloudFormation, Terraform, CI/CD</p>
+        </div>
+        <div class="stat">
+          <h3>Microservices</h3>
+          <p>Modernization, observability, deployment pipelines, reliability</p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  const arch=document.getElementById("arch"),
-        ic=document.getElementById("ic"),
-        ha=document.getElementById("hero-architect"),
-        hi=document.getElementById("hero-ic");
+  <main>
+    <section id="summary">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Professional Summary</h2>
+          </div>
+          <p>
+            <!--This section is designed so you can quickly update your positioning depending on whether you are targeting senior engineer, cloud engineer, or architect-leaning roles.-->
+          </p>
+        </div>
+        <div class="summary-grid">
+          <div class="card summary-card">
+            <h3>Backend Engineering</h3>
+            <p>Design and implementation of secure APIs, layered architecture, domain-driven backend services, and enterprise integration workflows.</p>
+          </div>
+          <div class="card summary-card">
+            <h3>Cloud & DevOps</h3>
+            <p>AWS and Azure deployment experience with Docker, ECS/EKS familiarity, GitHub Actions, TeamCity, Octopus, Terraform, and Infrastructure as Code.</p>
+          </div>
+          <div class="card summary-card">
+            <h3>Modernization</h3>
+            <p>Legacy modernization, monolith decomposition, cloud migration, deployment automation, and improving reliability and release processes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  arch.onclick=()=>{arch.setAttribute("aria-pressed","true");ic.setAttribute("aria-pressed","false");
-    ha.classList.remove("hide");hi.classList.add("hide");localStorage.setItem("mode","arch");};
-  ic.onclick=()=>{ic.setAttribute("aria-pressed","true");arch.setAttribute("aria-pressed","false");
-    hi.classList.remove("hide");ha.classList.add("hide");localStorage.setItem("mode","ic");};
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Core Skills</h2>
+          </div>
+          <p>
+            <!-- Keep the percentages as your own confidence indicators. You can edit the labels or levels directly in <code>index.html</code> without changing the overall layout.-->
+          </p>
+        </div>
 
-  if(localStorage.getItem("mode")==="ic") ic.click();
+        <div class="skills-layout">
+          <div class="card skill-panel">
+            <h3>Primary Skill Areas</h3>
 
-  document.getElementById("theme").onclick=()=>{
-    document.documentElement.toggleAttribute("data-theme","light");
-  };
+            <div class="skill-group">
+              <h4>.NET Backend</h4>
+              <div class="skill-row">
+                <div class="skill-meta"><span>C# / OOP / Collections / Async</span><span>92%</span></div>
+                <div class="bar"><i style="width:92%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>ASP.NET Core / Web API / MVC</span><span>90%</span></div>
+                <div class="bar"><i style="width:90%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Entity Framework / LINQ / SQL</span><span>87%</span></div>
+                <div class="bar"><i style="width:87%"></i></div>
+              </div>
+            </div>
 
-  function track(){ if(window.plausible) plausible("ResumeDownload"); }
-  document.getElementById("resumeA")?.addEventListener("click",track);
-  document.getElementById("resumeI")?.addEventListener("click",track);
-</script>
+            <div class="skill-group">
+              <h4>Cloud & DevOps</h4>
+              <div class="skill-row">
+                <div class="skill-meta"><span>AWS Services / Deployment Patterns</span><span>85%</span></div>
+                <div class="bar"><i style="width:85%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Docker / CI-CD / GitHub Actions</span><span>84%</span></div>
+                <div class="bar"><i style="width:84%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Terraform / Infra as Code</span><span>79%</span></div>
+                <div class="bar"><i style="width:79%"></i></div>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h4>Architecture & Engineering Practices</h4>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Microservices / API Design</span><span>86%</span></div>
+                <div class="bar"><i style="width:86%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>System Design / Scalability</span><span>81%</span></div>
+                <div class="bar"><i style="width:81%"></i></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-meta"><span>Observability / Reliability</span><span>76%</span></div>
+                <div class="bar"><i style="width:76%"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card skill-panel">
+            <h3>Tools & Technologies</h3>
+            <div class="tag-list">
+              <span class="tag">C#</span>
+              <span class="tag">.NET 8</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">MVC</span>
+              <span class="tag">Web API</span>
+              <span class="tag">Entity Framework Core</span>
+              <span class="tag">LINQ</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Microservices</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">AWS ECS</span>
+              <span class="tag">AWS ECR</span>
+              <span class="tag">AWS S3</span>
+              <span class="tag">AWS EC2</span>
+              <span class="tag">CloudFormation</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">TeamCity</span>
+              <span class="tag">Octopus Deploy</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Git</span>
+              <span class="tag">Agile</span>
+              <span class="tag">System Design</span>
+            </div>
+
+            <h3 style="margin-top:22px;">Tech Stack</h3>
+            <div class="tech-icons">
+              <div>⚙️ .NET</div>
+              <div>☁️ AWS</div>
+              <div>🐳 Docker</div>
+              <div>📦 Terraform</div>
+              <div>🌐 REST APIs</div>
+              <div>🗄 SQL Server</div>
+              <div>🔧 CI/CD</div>
+              <div>📊 System Design</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>What I Bring</h2>
+          </div>
+          <p>
+            <!--Position these cards to match the kind of role you are applying for. For architect-style applications, emphasize system design and modernization. For senior IC roles, emphasize delivery and backend depth.-->
+          </p>
+        </div>
+        <div class="highlights-grid">
+          <div class="card highlight-card">
+            <h3>Modernization Mindset</h3>
+            <p>Strong focus on upgrading legacy enterprise applications into maintainable, cloud-ready services with cleaner deployments and better operational visibility.</p>
+          </div>
+          <div class="card highlight-card">
+            <h3>Client-Facing Delivery</h3>
+            <p>Comfortable working closely with stakeholders, clarifying requirements, and converting business expectations into pragmatic technical execution.</p>
+          </div>
+          <div class="card highlight-card">
+            <h3>Production Ownership</h3>
+            <p>Experience handling release workflows, support scenarios, deployment improvements, and operational reliability in enterprise environments.</p>
+          </div>
+          <div class="card highlight-card">
+            <h3>Scalable Backend Thinking</h3>
+            <p>Good understanding of service boundaries, integration design, cloud deployment, and the tradeoffs involved in performance, maintainability, and speed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Project Highlights</h2>
+          </div>
+          <p>
+            <!--These are placeholder summaries you can customize based on the exact resume version you want to show recruiters, hiring managers, or interview panels.-->
+          </p>
+        </div>
+        <div class="projects-grid">
+          <div class="card project-card">
+            <h3>Cloud Modernization Program</h3>
+            <p>Worked on modernizing legacy workloads into cloud-deployable services using .NET, AWS infrastructure, and deployment automation.</p>
+            <ul>
+              <li>Improved deployment consistency through CI/CD and infrastructure templates.</li>
+              <li>Helped reduce manual release effort by introducing repeatable automation.</li>
+              <li>Supported modernization of backend services toward container-ready delivery.</li>
+            </ul>
+          </div>
+          <div class="card project-card">
+            <h3>Enterprise API & Integration Layer</h3>
+            <p>Designed and enhanced APIs for enterprise workflows, focusing on maintainability, security, and service communication.</p>
+            <ul>
+              <li>Built backend logic using ASP.NET Core, C#, EF, and SQL-driven workflows.</li>
+              <li>Improved service separation and reduced tightly coupled components.</li>
+              <li>Supported business-critical integrations and internal platforms.</li>
+            </ul>
+          </div>
+          <div class="card project-card">
+            <h3>DevOps & Release Engineering Improvements</h3>
+            <p>Contributed to improving release quality, deployment standardization, and environment consistency.</p>
+            <ul>
+              <li>Worked with GitHub Actions, TeamCity, Octopus, and Terraform-driven tasks.</li>
+              <li>Helped streamline repeatable release and configuration practices.</li>
+              <li>Supported faster and safer deployment workflows for multiple teams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Experience Snapshot</h2>
+          </div>
+          <p>
+            <!--You can replace these entries with exact employer names, dates, and bullet points from your latest resume whenever needed.-->
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="card timeline-card">
+            <div class="timeline-title">
+              <strong>Associate Specialist Technology</strong>
+              <span>Current Role</span>
+            </div>
+            <p>Driving backend development, cloud-centric implementation, and modernization-focused engineering work in enterprise delivery environments.</p>
+            <ul>
+              <li>Designing and maintaining .NET services and backend workflows.</li>
+              <li>Working with cloud platforms and delivery automation.</li>
+              <li>Contributing to scalable and supportable technical solutions.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-card">
+            <div class="timeline-title">
+              <strong>Previous Enterprise Engineering Roles</strong>
+              <span>Legacy modernization to cloud-native progression</span>
+            </div>
+            <p>Built experience across backend engineering, migration work, API development, and enterprise project execution.</p>
+            <ul>
+              <li>Worked across .NET, SQL, APIs, and integration-heavy applications.</li>
+              <li>Handled production support, feature delivery, and deployment coordination.</li>
+              <li>Expanded toward cloud adoption, infrastructure automation, and architecture thinking.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact & Profile Links</h2>
+          </div>
+          <p>
+            <!-- Replace the placeholders below with your live links. This keeps the file easy to maintain directly from your repository.-->
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h3>Email</h3>
+            <p>kbgade.cse@gmail.com</p>
+          </div>
+          <div class="card contact-card">
+            <h3>LinkedIn</h3>
+            <p>
+              <a href="https://www.linkedin.com/in/kiran-gade-360b3299/" target="_blank" style="display:flex;align-items:center;gap:10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM.23 8h4.52v15H.23V8zM8.34 8h4.33v2.05h.06c.6-1.14 2.07-2.34 4.26-2.34 4.55 0 5.39 3 5.39 6.89V23h-4.51v-7.64c0-1.82-.03-4.16-2.53-4.16-2.53 0-2.92 1.98-2.92 4.03V23H8.34V8z"/>
+                </svg>
+                linkedin.com/in/kiran-gade/
+              </a>
+            </p>
+          </div>
+          <div class="card contact-card">
+            <h3>GitHub</h3>
+            <p>
+              <a href="https://github.com/KBGade" target="_blank" style="display:flex;align-items:center;gap:10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.69-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.28 1.2-3.09-.12-.3-.52-1.52.11-3.16 0 0 .98-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.63 1.64.23 2.86.11 3.16.75.81 1.2 1.83 1.2 3.09 0 4.44-2.71 5.41-5.29 5.7.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.66.79.55C20.21 21.41 23.5 17.1 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+                </svg>
+                github.com/KBGade
+              </a>
+            </p>
+          </div>
+          <div class="card contact-card">
+            <h3>Resume</h3>
+            <p><a href="Kiran-Gade-Resume.pdf" download class="btn btn-primary">Download Resume</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Built as a single editable HTML file so you can update text, skills, links, and role positioning directly in <strong>index.html</strong>.
+    </div>
+  </footer>
+
+  <a href="Kiran-Gade-Resume.pdf" download class="resume-float">⬇ Download Resume</a>
+
+  <script>
+    async function loadWeather() {
+      const weatherBox = document.getElementById("weather-box");
+      if (!weatherBox) return;
+
+      try {
+        const locRes = await fetch("https://ipapi.co/json/");
+        const locData = await locRes.json();
+
+        const city = locData.city || "Unknown city";
+        const countryCode = (locData.country_code || "").toUpperCase();
+
+        function getFlagEmoji(code) {
+          if (!code || code.length !== 2) return "🌍";
+          return code.replace(/./g, char =>
+            String.fromCodePoint(127397 + char.charCodeAt())
+          );
+        }
+
+        const flag = getFlagEmoji(countryCode);
+
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${locData.latitude}&longitude=${locData.longitude}&current_weather=true`
+        );
+        const weatherData = await weatherRes.json();
+
+        const temp = weatherData?.current_weather?.temperature;
+
+        if (typeof temp === "number") {
+          weatherBox.innerHTML = `<span>🌤</span><span>${flag} ${city} • ${temp}°C</span>`;
+        } else {
+          weatherBox.innerHTML = `<span>🌤</span><span>${flag} ${city} • Weather unavailable</span>`;
+        }
+      } catch (error) {
+        console.error("Weather load failed:", error);
+        weatherBox.innerHTML = "<span>🌤</span><span>Weather unavailable in local preview. Use localhost or GitHub Pages.</span>";
+      }
+    }
+
+    loadWeather();
+
+    const bars = document.querySelectorAll(".bar i");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.width;
+        }
+      });
+    });
+
+    bars.forEach(bar => {
+      bar.dataset.width = bar.getAttribute("style").match(/width:\s*([^;]+)/)?.[1] || "0%";
+      bar.style.width = "0%";
+      observer.observe(bar);
+    });
+  </script>
 </body>
 </html>
