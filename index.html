@@ -180,6 +180,13 @@
       display: block;
     }
 
+    .weather-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
     .weather-refresh {
       display: inline-flex;
       align-items: center;
@@ -205,18 +212,6 @@
     .weather-refresh:hover {
       background: rgba(255,255,255,0.14);
       transform: rotate(180deg);
-    }
-
-    .weather-refresh:hover {
-      background: rgba(255,255,255,0.14);
-      transform: rotate(25deg);
-    }
-
-    .weather-text {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
     }
 
     .hero-actions {
@@ -550,9 +545,19 @@
           Strong at translating business requirements into reliable backend architecture, clean APIs, and deployable cloud solutions.
         </p>
         <div id="weather-box" class="weather-box">
-          <span class="weather-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="9" r="4" fill="#FFD54A"/><g stroke="#FFD54A" stroke-width="1.6" stroke-linecap="round"><line x1="9" y1="1.5" x2="9" y2="4"/><line x1="9" y1="14" x2="9" y2="16.5"/><line x1="1.5" y1="9" x2="4" y2="9"/><line x1="14" y1="9" x2="16.5" y2="9"/><line x1="3.6" y1="3.6" x2="5.3" y2="5.3"/><line x1="12.7" y1="12.7" x2="14.4" y2="14.4"/><line x1="3.6" y1="14.4" x2="5.3" y2="12.7"/><line x1="12.7" y1="5.3" x2="14.4" y2="3.6"/></g><path d="M16.5 18.5H8a3.5 3.5 0 1 1 .8-6.9A4.8 4.8 0 0 1 17.7 10a3.2 3.2 0 1 1-1.2 8.5Z" fill="#F4F7FB"/></svg></span>
-          <span class="weather-text">Detecting your city weather...</span>
-          <button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span class="weather-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="3.5" fill="#FFD54A"/>
+              <path d="M16.8 18.2H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 9a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/>
+            </svg>
+          </span>
+          <span class="weather-text">Fetching local weather...</span>
+          <button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
@@ -887,100 +892,109 @@
   <a href="Kiran-Gade-Resume.pdf" download class="resume-float">⬇ Download Resume</a>
 
   <script>
+    function weatherSvg(type) {
+      const icons = {
+        sunny: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="#FFD54A"/><g stroke="#FFD54A" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.8" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22.2"/><line x1="1.8" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22.2" y2="12"/><line x1="4.2" y1="4.2" x2="6.2" y2="6.2"/><line x1="17.8" y1="17.8" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.2" y2="17.8"/><line x1="17.8" y1="6.2" x2="19.8" y2="4.2"/></g></svg>`,
+        cloudy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8.5" cy="8.5" r="3.5" fill="#FFD54A"/><path d="M16.8 18.2H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 9a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/></svg>`,
+        rainy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.8 14.5H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 5.3a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/><path d="M9 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M17 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+        night: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.8 3.2a7.7 7.7 0 1 0 5 13.7 8.7 8.7 0 1 1-5-13.7Z" fill="#B8C7FF"/><circle cx="17.8" cy="7" r="1" fill="#FFFFFF"/><circle cx="19.8" cy="10" r="0.9" fill="#FFFFFF"/></svg>`
+      };
+
+      return icons[type] || icons.cloudy;
+    }
+
+    function refreshButton() {
+      return `
+        <button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>`;
+    }
+
+    function getFlagFromCountry(countryName) {
+      const countryMap = {
+        "India": "IN",
+        "United States of America": "US",
+        "United States": "US",
+        "United Kingdom": "GB",
+        "Germany": "DE",
+        "Japan": "JP",
+        "Canada": "CA",
+        "Australia": "AU",
+        "France": "FR",
+        "Singapore": "SG"
+      };
+
+      const code = countryMap[countryName] || "";
+      if (!code || code.length !== 2) return "🌍";
+
+      return code.replace(/./g, char =>
+        String.fromCodePoint(127397 + char.charCodeAt())
+      );
+    }
+
+    function getWeatherType(description) {
+      const desc = (description || "").toLowerCase();
+
+      if (desc.includes("sunny") || desc.includes("clear")) return "sunny";
+      if (desc.includes("rain") || desc.includes("drizzle") || desc.includes("shower") || desc.includes("thunder")) return "rainy";
+      if (desc.includes("cloud") || desc.includes("mist") || desc.includes("fog") || desc.includes("overcast")) return "cloudy";
+
+      const hour = new Date().getHours();
+      if (hour >= 19 || hour < 6) return "night";
+
+      return "cloudy";
+    }
+
     async function loadWeather() {
       const weatherBox = document.getElementById("weather-box");
       if (!weatherBox) return;
 
-      function weatherSvg(type) {
-        const icons = {
-          sunny: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="#FFD54A"/><g stroke="#FFD54A" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.8" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22.2"/><line x1="1.8" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22.2" y2="12"/><line x1="4.2" y1="4.2" x2="6.2" y2="6.2"/><line x1="17.8" y1="17.8" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.2" y2="17.8"/><line x1="17.8" y1="6.2" x2="19.8" y2="4.2"/></g></svg>`,
-          cloudy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8.5" cy="8.5" r="3.5" fill="#FFD54A"/><path d="M16.8 18.2H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 9a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/></svg>`,
-          rainy: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.8 14.5H8a3.8 3.8 0 1 1 .9-7.5A5.2 5.2 0 0 1 18.4 5.3a3.5 3.5 0 1 1-1.6 9.2Z" fill="#F5F7FB"/><path d="M9 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/><path d="M17 17.2l-1 2.3" stroke="#69B7FF" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-          night: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.8 3.2a7.7 7.7 0 1 0 5 13.7 8.7 8.7 0 1 1-5-13.7Z" fill="#B8C7FF"/><circle cx="17.8" cy="7" r="1" fill="#FFFFFF"/><circle cx="19.8" cy="10" r="0.9" fill="#FFFFFF"/></svg>`
-        };
-        return icons[type] || icons.cloudy;
-      }
-
-      function refreshButton() {
-        return `<button class="weather-refresh" type="button" aria-label="Refresh weather" onclick="loadWeather()" title="Refresh weather"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 4 20 10 14 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
-      }
-
-      function getFlagEmoji(code) {
-        if (!code || code.length !== 2) return "🌍";
-        return code.replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt()));
-      }
-
-      function mapWeatherCode(code, isDay = true) {
-        if (!isDay) return "night";
-        if ([0].includes(code)) return "sunny";
-        if ([1, 2, 3, 45, 48].includes(code)) return "cloudy";
-        if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return "rainy";
-        return isDay ? "cloudy" : "night";
-      }
-
-      async function fetchJson(url) {
-        const res = await fetch(url, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
-      }
-
-      async function getLocation() {
-        try {
-          return await fetchJson("https://ipapi.co/json/");
-        } catch {
-          return await fetchJson("https://ipwho.is/");
-        }
-      }
-
-      async function getWeatherPrimary(lat, lon) {
-        const data = await fetchJson(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
-        const current = data?.current_weather;
-        if (!current || typeof current.temperature !== "number") throw new Error("Primary weather unavailable");
-        return {
-          temp: current.temperature,
-          type: mapWeatherCode(current.weathercode, current.is_day === 1)
-        };
-      }
-
-      async function getWeatherFallback(lat, lon) {
-        const data = await fetchJson(`https://wttr.in/${lat},${lon}?format=j1`);
-        const current = data?.current_condition?.[0];
-        if (!current) throw new Error("Fallback weather unavailable");
-        const temp = Number(current.temp_C);
-        const desc = (current.weatherDesc?.[0]?.value || "").toLowerCase();
-        let type = "cloudy";
-        if (desc.includes("sun") || desc.includes("clear")) type = "sunny";
-        else if (desc.includes("rain") || desc.includes("drizzle") || desc.includes("shower")) type = "rainy";
-        else if (desc.includes("cloud") || desc.includes("mist") || desc.includes("fog") || desc.includes("overcast")) type = "cloudy";
-        return { temp, type };
-      }
-
-      weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Fetching local weather...</span>${refreshButton()}`;
+      weatherBox.innerHTML = `
+        <span class="weather-icon">${weatherSvg("cloudy")}</span>
+        <span class="weather-text">Fetching local weather...</span>
+        ${refreshButton()}
+      `;
 
       try {
-        const locData = await getLocation();
-        const city = locData.city || locData.city_name || "Unknown city";
-        const countryCode = (locData.country_code || locData.country_code_iso3?.slice(0,2) || "").toUpperCase();
-        const lat = locData.latitude ?? locData.lat;
-        const lon = locData.longitude ?? locData.lon;
-        const flag = getFlagEmoji(countryCode);
+        const res = await fetch("https://wttr.in/?format=j1", { cache: "no-store" });
+        if (!res.ok) throw new Error("wttr.in request failed");
 
-        let weather;
-        try {
-          weather = await getWeatherPrimary(lat, lon);
-        } catch (primaryError) {
-          console.warn("Primary weather API failed:", primaryError);
-          weather = await getWeatherFallback(lat, lon);
-        }
+        const data = await res.json();
 
-        if (typeof weather.temp === "number") {
-          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(weather.type)}</span><span class="weather-text">${flag} ${city} • ${weather.temp}°C</span>${refreshButton()}`;
+        const current = data?.current_condition?.[0];
+        const nearest = data?.nearest_area?.[0];
+
+        const city = nearest?.areaName?.[0]?.value || "Your area";
+        const country = nearest?.country?.[0]?.value || "";
+        const temp = current?.temp_C;
+        const desc = current?.weatherDesc?.[0]?.value || "";
+
+        const type = getWeatherType(desc);
+        const flag = getFlagFromCountry(country);
+
+        if (temp !== undefined) {
+          weatherBox.innerHTML = `
+            <span class="weather-icon">${weatherSvg(type)}</span>
+            <span class="weather-text">${flag} ${city} • ${temp}°C • ${desc}</span>
+            ${refreshButton()}
+          `;
         } else {
-          weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg(weather.type)}</span><span class="weather-text">${flag} ${city} • Weather unavailable</span>${refreshButton()}`;
+          weatherBox.innerHTML = `
+            <span class="weather-icon">${weatherSvg(type)}</span>
+            <span class="weather-text">${flag} ${city} • Weather unavailable</span>
+            ${refreshButton()}
+          `;
         }
       } catch (error) {
         console.error("Weather load failed:", error);
-        weatherBox.innerHTML = `<span class="weather-icon">${weatherSvg("cloudy")}</span><span class="weather-text">Weather currently unavailable.</span>${refreshButton()}`;
+        weatherBox.innerHTML = `
+          <span class="weather-icon">${weatherSvg("cloudy")}</span>
+          <span class="weather-text">Weather currently unavailable.</span>
+          ${refreshButton()}
+        `;
       }
     }
 
@@ -996,7 +1010,7 @@
     });
 
     bars.forEach(bar => {
-      bar.dataset.width = bar.getAttribute("style").match(/width:\s*([^;]+)/)?.[1] || "0%";
+      bar.dataset.width = bar.getAttribute("style").match(/width:\\s*([^;]+)/)?.[1] || "0%";
       bar.style.width = "0%";
       observer.observe(bar);
     });
