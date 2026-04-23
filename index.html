@@ -940,7 +940,52 @@
         </div>
       </div>
     </section>
+    <section id="system-design">
+  <div class="container">
+    <div class="section-head">
+      <h2>System Design</h2>
+      <p>Sample architecture demonstrating scalable backend system design thinking.</p>
+    </div>
 
+    <div class="card project-card">
+      <h3>Multi-Tenant Lead Routing System</h3>
+
+      <p>
+        Designed a scalable system to ingest leads from multiple sources and route them to the correct tenant based on business rules.
+      </p>
+
+      <ul>
+        <li>Supports multiple tenants with isolation</li>
+        <li>Handles high-throughput lead ingestion</li>
+        <li>Applies routing logic based on tenant rules</li>
+        <li>Ensures reliability using queues and retries</li>
+      </ul>
+
+      <!-- Architecture Diagram -->
+      <div class="arch-diagram">
+        <div>Client</div>
+        <span>→</span>
+        <div>API Gateway</div>
+        <span>→</span>
+        <div>Lead Service (.NET)</div>
+        <span>→</span>
+        <div>SQS</div>
+        <span>→</span>
+        <div>Worker Service</div>
+        <span>→</span>
+        <div>Tenant DB</div>
+      </div>
+
+      <p style="margin-top:12px;">
+        <strong>Tech:</strong> .NET Core, AWS API Gateway, SQS, ECS, RDS, Redis
+      </p>
+
+      <p>
+        <strong>Key Concepts:</strong> Multi-tenancy, async processing, scalability, fault tolerance
+      </p>
+    </div>
+  </div>
+</section>
     <section id="contact">
       <div class="container">
         <div class="section-head">
