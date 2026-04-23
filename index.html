@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiran Gade | .NET + AWS Engineer</title>
   <meta name="description" content="Senior .NET and AWS engineer portfolio with skills, architecture strengths, and project highlights." />
+  <p style="margin-top:8px;color:#72e0c4;font-weight:600;">
+  Available for Senior Backend / Cloud Engineer roles
+</p>
   <style>
     :root {
       --bg: #0b1020;
@@ -613,7 +616,27 @@
         </div>
       </div>
     </section>
+<section id="architecture">
+  <div class="container">
+    <div class="section-head">
+      <h2>Architecture & Engineering Approach</h2>
+    </div>
 
+    <div class="card summary-card">
+      <p>
+        I design backend systems with a focus on scalability, reliability, and observability. My approach combines clean architecture principles with cloud-native patterns.
+      </p>
+
+      <ul>
+        <li>Design APIs with clear service boundaries</li>
+        <li>Use async communication (SQS, events) where needed</li>
+        <li>Implement observability (metrics, logs, monitoring)</li>
+        <li>Apply CI/CD and Infrastructure as Code (Terraform)</li>
+        <li>Balance performance, cost, and maintainability</li>
+      </ul>
+    </div>
+  </div>
+</section>
     <section id="skills">
       <div class="container">
         <div class="section-head">
@@ -754,6 +777,30 @@
         </div>
       </div>
     </section>
+    <section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Engineering Highlights</h2>
+    </div>
+
+    <div class="summary-grid">
+      <div class="card summary-card">
+        <h3>Observability</h3>
+        <p>Implemented metrics-based monitoring using Prometheus and Grafana dashboards.</p>
+      </div>
+
+      <div class="card summary-card">
+        <h3>Cloud Deployment</h3>
+        <p>Hands-on experience with AWS ECS, EC2, CI/CD pipelines, and infra automation.</p>
+      </div>
+
+      <div class="card summary-card">
+        <h3>System Design</h3>
+        <p>Designed scalable APIs and microservices focusing on performance and reliability.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="projects">
       <div class="container">
@@ -767,8 +814,31 @@
         </div>
         <div class="projects-grid">
           <div class="card project-card">
+  <h3>Observability Demo – .NET 8 + Prometheus + Grafana</h3>
+  <p>
+    Built a production-style observability system for a .NET 8 Web API using Prometheus and Grafana.
+  </p>
+
+  <ul>
+    <li>Implemented custom metrics (orders_created, failures, latency)</li>
+    <li>Exposed /metrics endpoint using prometheus-net</li>
+    <li>Configured Prometheus scraping</li>
+    <li>Built Grafana dashboards for real-time monitoring</li>
+    <li>Added health checks and observability best practices</li>
+  </ul>
+
+  <p><strong>Tech:</strong> .NET 8, Prometheus, Grafana, REST API</p>
+
+  <p>
+    <strong>GitHub:</strong><br/>
+    <a href="https://github.com/KBGade/dotnet-prometheus-grafana-demo" target="_blank">
+      View Repository
+    </a>
+  </p>
+</div>
+          <div class="card project-card">
             <h3>Cloud Modernization Program</h3>
-            <p>Worked on modernizing legacy workloads into cloud-deployable services using .NET, AWS infrastructure, and deployment automation.</p>
+            <p>Migrated legacy monolith to cloud-ready architecture using .NET and AWS, improving deployment consistency and reducing manual release effort.</p>
             <ul>
               <li>Improved deployment consistency through CI/CD and infrastructure templates.</li>
               <li>Helped reduce manual release effort by introducing repeatable automation.</li>
@@ -873,6 +943,9 @@
                 github.com/KBGade
               </a>
             </p>
+            <p style="margin-top:6px;color:#b8c2e0;font-size:13px;">
+  Active backend & cloud projects demonstrating real-world implementations.
+</p>
           </div>
           <div class="card contact-card">
             <h3>Resume</h3>
