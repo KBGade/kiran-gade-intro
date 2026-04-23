@@ -425,7 +425,7 @@
     }
 
     .projects-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .project-card ul,
@@ -622,20 +622,22 @@
     <div class="section-head">
       <h2>Architecture & Engineering Approach</h2>
     </div>
+<div class="summary-grid">
+  <div class="card summary-card">
+    <h3>API Design</h3>
+    <p>Clear service boundaries and scalable API contracts.</p>
+  </div>
 
-    <div class="card summary-card">
-      <p>
-        I design backend systems with a focus on scalability, reliability, and observability. My approach combines clean architecture principles with cloud-native patterns.
-      </p>
+  <div class="card summary-card">
+    <h3>Async Systems</h3>
+    <p>Event-driven patterns using queues and decoupled services.</p>
+  </div>
 
-      <ul>
-        <li>Design APIs with clear service boundaries</li>
-        <li>Use async communication (SQS, events) where needed</li>
-        <li>Implement observability (metrics, logs, monitoring)</li>
-        <li>Apply CI/CD and Infrastructure as Code (Terraform)</li>
-        <li>Balance performance, cost, and maintainability</li>
-      </ul>
-    </div>
+  <div class="card summary-card">
+    <h3>Observability</h3>
+    <p>Metrics, logging, and monitoring using Prometheus & Grafana.</p>
+  </div>
+</div>
   </div>
 </section>
     <section id="skills">
@@ -817,7 +819,7 @@
           <div class="card project-card">
   <h3>Observability Demo – .NET 8 + Prometheus + Grafana</h3>
   <p>
-    Built a production-style observability system for a .NET 8 Web API using Prometheus and Grafana.
+    Designed and implemented a production-grade observability solution for a .NET 8 Web API using Prometheus and Grafana.
   </p>
 
   <ul>
